@@ -1,1 +1,1 @@
-https://www.codingame.com/training/easy/encryptiondecryption-of-enigma-machine
+https://www.codingame.com/ide/puzzle/encryptiondecryption-of-enigma-machine
