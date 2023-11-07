@@ -1,1 +1,1 @@
-https://www.codingame.com/training/medium/hacking-at-robbercity
+https://www.codingame.com/ide/puzzle/hacking-at-robbercity
