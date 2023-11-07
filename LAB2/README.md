@@ -1,1 +1,1 @@
-https://www.codingame.com/training/medium/frequency-based-decryption
+https://www.codingame.com/ide/puzzle/frequency-based-decryption
