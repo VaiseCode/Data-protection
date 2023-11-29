@@ -1,0 +1,168 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+public class CodeWars
+{
+    public static string Scanner(int[][] qrcode)
+    {
+        int i, x, y = 0;
+        string decodedString = "";
+        for (i = 20; i >= 1;)
+        {
+            if (i == 6)
+            {
+                i = 5;
+            }
+
+            if (y < 0)
+            {
+                for (y = 0; y <= 20; y++)
+                {
+                    for (x = i; x >= (i - 1); x--)
+                    {
+                        if (y <= 8 && x <= 8)
+                        {
+                            continue;
+                        }
+                        if (y <= 8 && x >= 13)
+                        {
+                            continue;
+                        }
+                        if (y >= 13 && x <= 8)
+                        {
+                            continue;
+                        }
+                        if (x == 6)
+                        {
+                            continue;
+                        }
+
+                        if ((x + y) % 2 == 0)
+                        {
+                            if (qrcode[y][x] == 1)
+                            {
+                                decodedString += "0";
+                            }
+                            else
+                            {
+                                decodedString += "1";
+                            }
+                        }
+                        else
+                        {
+                            if (qrcode[y][x] == 0)
+                            {
+                                decodedString += "0";
+                            }
+                            else
+                            {
+                                decodedString += "1";
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                for (y = 20; y >= 0; y--)
+                {
+                    for (x = i; x >= (i - 1); x--)
+                    {
+                        if (y <= 8 && x <= 8)
+                        {
+                            continue;
+                        }
+                        if (y <= 8 && x >= 13)
+                        {
+                            continue;
+                        }
+                        if (y >= 13 && x <= 8)
+                        {
+                            continue;
+                        }
+                        if (x == 6)
+                        {
+                            continue;
+                        }
+
+                        if ((x + y) % 2 == 0)
+                        {
+                            if (qrcode[y][x] == 1)
+                            {
+                                decodedString += "0";
+                            }
+                            else
+                            {
+                                decodedString += "1";
+                            }
+                        }
+                        else
+                        {
+                            if (qrcode[y][x] == 0)
+                            {
+                                decodedString += "0";
+                            }
+                            else
+                            {
+                                decodedString += "1";
+                            }
+                        }
+                    }
+                }
+            }
+            i -= 2;
+        }
+
+        int c = 0;
+        string length = "";
+        i = 3;
+        while (i < 12)
+        {
+            length += decodedString[i];
+            c++;
+            i++;
+        }
+
+        int length2 = BinaryToDecimal(length);
+        c = 0;
+        int cc = 0;
+        string buffer = "";
+        string result = "";
+        for (int j = 12; j < 12 + (length2 * 8); j++)
+        {
+            if (buffer.Length == 8)
+            {
+                int val = BinaryToDecimal(buffer);
+                result += (char)val;
+                buffer = "";
+                cc = 0;
+            }
+            buffer += decodedString[j];
+            cc++;
+        }
+        int value = BinaryToDecimal(buffer);
+        result +=
+        (char)value;
+        return result;
+    }
+
+    private static int BinaryToDecimal(string str)
+    {
+        int num = int.Parse(str);
+        int decimalValue = 0, baseValue = 1, remainder;
+        while (num > 0)
+        {
+            remainder = num % 10;
+            decimalValue += remainder * baseValue;
+            num /= 10;
+            baseValue *= 2;
+        }
+        return decimalValue;
+    }
+    static void Main()
+    {
+        ;
+    }
+
+}
